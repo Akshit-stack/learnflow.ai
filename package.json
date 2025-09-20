@@ -1,0 +1,23 @@
+{
+  "name": "learnflow-ai-workspace",
+  "version": "1.0.0",
+  "description": "LearnFlow AI - Complete learning platform with dual applications",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:a\" \"npm run dev:b\"",
+    "dev:a": "cd A-main/A-main && npm run dev",
+    "dev:b": "cd B-main/B-main && npm run dev",
+    "install:all": "cd A-main/A-main && npm install && cd ../../B-main/B-main && npm install",
+    "build": "npm run build:a && npm run build:b",
+    "build:a": "cd A-main/A-main && npm run build",
+    "build:b": "cd B-main/B-main && npm run build",
+    "clean": "rmdir /s /q A-main\\A-main\\node_modules 2>nul & rmdir /s /q B-main\\B-main\\node_modules 2>nul & rmdir /s /q node_modules 2>nul",
+    "audit": "npm audit && cd A-main/A-main && npm audit && cd ../../B-main/B-main && npm audit",
+    "audit:fix": "npm audit fix && cd A-main/A-main && npm audit fix && cd ../../B-main/B-main && npm audit fix",
+    "start": "npm run dev",
+    "health": "node health-check.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
